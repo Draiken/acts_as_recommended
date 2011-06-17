@@ -57,11 +57,11 @@ Now, we can run the migrations and we can already recommend whatever we want!
 
     # check if user recommended
     post.recommended_by?( bob ) # true
-    post.recommended_by?( mary ) # true
+    post.recommended_by?( joe ) # true
 
     # get user's recommendation
     post.get_recommendation_of( bob ) # true
-    post.get_recommendation_of( mary ) # false
+    post.get_recommendation_of( joe ) # false
 
 Note: users can only recommend once, a second recommendation will replace the latter
 
