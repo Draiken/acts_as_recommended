@@ -68,7 +68,7 @@ Note: users can only recommend once, a second recommendation will replace the la
 == Customization
 
 By default the recommendation must be done by a +User+ model
-you can customize that with a simple initializer like +config/initializers/recommendations.rb+
+you can customize that with a simple initializer like <em>config/initializers/recommendations.rb</em>
 
     ActsAsRecommended.owner_class = :admin
 
