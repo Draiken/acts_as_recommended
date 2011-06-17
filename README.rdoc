@@ -67,11 +67,10 @@ Note: users can only recommend once, a second recommendation will replace the la
 
 == Customization
 
-By default the recommendation must be done by a User model
-you can customize that with a simple initializer like *config/initializers/recommendations.rb*
+By default the recommendation must be done by a +User+ model
+you can customize that with a simple initializer like +config/initializers/recommendations.rb+
 
     ActsAsRecommended.owner_class = :admin
-
 
 == Contribution
 
@@ -84,5 +83,5 @@ Create a simple controller to create/alter recommendations and generators for cu
 
 == Author
 
-Created and mantained by Luiz Felipe Garcia Pereira aka {*Draiken*}[http://github.com/Draiken]
+Created and mantained by <b>Luiz Felipe Garcia Pereira</b> aka {Draiken}[http://github.com/Draiken]
 
