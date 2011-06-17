@@ -1,0 +1,88 @@
+= Acts as Recommended
+
+A simple rails 3 engine to add recommendation functionallity to your application
+
+== Installation
+
+Add to your *Gemfile*
+
+    gem 'acts_as_recommended'
+
+And just run
+
+    bundle
+
+== Usage
+
+First thing we need is the recommendation model himself
+and we have a generator that creates the model's tables
+
+    rails g acts_as_recommended:tables
+
+After that we can add the required fields for our models with
+another generator
+
+    rails g acts_as_recommended:recommendations_for Post
+
+This will add a migration adding the required fields to add
+recommendations to a certain model.
+
+Then all we simply add this line to our desired model
+
+    acts_as_recommended
+
+Now, we can run the migrations and we can already recommend whatever we want!
+
+    post = Post.first
+
+    bob = User.first
+    joe = User.last
+    mary = User.find(100)
+
+    post.recommend!( true, bob  )
+    post.recommend!( 0,    joe  )
+    post.recommend!( true, mary )
+
+    # good minus bad recommendations
+    post.recommendations # 1
+
+    post.recommendations_count # 3
+
+    post.good_recommendations # 2
+    post.bad_recommendations # 1
+
+    post.good_recommendations_percent # 66.67
+    # pass a format optionally
+    post.bad_recommendations_percent( '%.1f' ) # 33.3
+
+    # check if user recommended
+    post.recommended_by?( bob ) # true
+    post.recommended_by?( mary ) # true
+
+    # get user's recommendation
+    post.get_recommendation_of( bob ) # true
+    post.get_recommendation_of( mary ) # false
+
+Note: users can only recommend once, a second recommendation will replace the latter
+
+== Customization
+
+By default the recommendation must be done by a User model
+you can customize that with a simple initializer like *config/initializers/recommendations.rb*
+
+    ActsAsRecommended.owner_model = :admin
+
+
+== Contribution
+
+Want to contribute? Fork, make it, ask for pull request!
+Found an issue? Use the issues tracker!
+
+== TODO
+
+Create a simple controller to create/alter recommendations and generators for customization!
+
+== Author
+
+Created and mantained by Luiz Felipe Garcia Pereira aka {*Draiken*}[http://github.com/Draiken]
+
